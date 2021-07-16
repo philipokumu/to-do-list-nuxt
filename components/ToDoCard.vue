@@ -10,6 +10,7 @@
     </div>
     <div>
       <FontAwesomeIcon icon="coffee"></FontAwesomeIcon>
+      <i class="fas fa-exclamation"></i>
     </div>
   </div>
 </template>
