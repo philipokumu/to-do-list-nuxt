@@ -37,7 +37,10 @@ export default {
   ],
 
   fontawesome: {
-    icons: [],
+    icons: {
+      solid: true,
+      brands: true,
+    },
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules

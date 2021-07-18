@@ -7,6 +7,7 @@
       to-red-500
       min-h-screen
       flex flex-col
+      justify-center
     "
   >
     <Nuxt />

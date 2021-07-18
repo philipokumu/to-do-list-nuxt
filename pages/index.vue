@@ -1,7 +1,6 @@
 <template>
-  <div class="mx-36">
+  <div class="mx-36 my-0">
     <h1 class="flex justify-center mb-5">To do List</h1>
-
     <div class="mb-5">
       <div class="mb-3 flex justify-between">
         <input
@@ -13,7 +12,6 @@
             border-b-2
             mr-2
             border-gray-50
-            text-white
             placeholder-gray-50
             w-2/3
           "
@@ -26,7 +24,7 @@
             outline-none
             w-1/3
             bg-transparent
-            text-white
+            text-gray-400
             border-b-2 border-gray-50
           "
         >
@@ -49,16 +47,15 @@
             text-lg
             focus:from-pink-500 focus:to-yellow-500
             w-1/2
+            transform
             focus:scale-95
           "
         >
-          Add To do
+          Add
         </button>
       </div>
     </div>
-    <span v-for="i in 10" :key="i">
-      <to-do-card></to-do-card>
-    </span>
+    <to-do-card v-for="(todo, index) in todos" :key="index" :todo="todo" />
   </div>
 </template>
 
@@ -67,6 +64,43 @@ import ToDoCard from '../components/ToDoCard.vue'
 export default {
   components: {
     ToDoCard,
+  },
+  data() {
+    return {
+      active: true,
+      todos: [
+        {
+          title: 'Eat my breakfast',
+          category: 'uncategorised',
+          date: 'Monday',
+          completed: false,
+        },
+        {
+          title: 'Eat my Lunch',
+          category: 'uncategorised',
+          date: 'Tuesday',
+          completed: true,
+        },
+        {
+          title: 'Eat my Supper',
+          category: 'uncategorised',
+          date: 'Wednesday',
+          completed: false,
+        },
+        {
+          title: 'Eat my Dinner',
+          category: 'uncategorised',
+          date: 'Thursday',
+          completed: false,
+        },
+        {
+          title: 'Eat my breakfast',
+          category: 'uncategorised',
+          date: 'Friday',
+          completed: false,
+        },
+      ],
+    }
   },
 }
 </script>
