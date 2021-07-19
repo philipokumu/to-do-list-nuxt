@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-36 min-h-screen">
+  <div class="mx-36 min-h-screen mt-6">
     <div class="mb-5">
       <form autocomplete="off" class="w-full" @submit.prevent="submitForm">
         <div class="mb-3 flex justify-between">
