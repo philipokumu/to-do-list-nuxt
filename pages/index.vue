@@ -14,6 +14,7 @@
               mr-2
               border-gray-50
               placeholder-gray-50
+              text-white
               w-2/3
             "
             required
@@ -126,6 +127,7 @@ export default {
   methods: {
     submitForm() {
       const newItem = {
+        id: this.newTodo.length,
         title: this.newTodo.title,
         category: this.newTodo.category,
         date: moment().format('MMMM Do YYYY'),
