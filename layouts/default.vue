@@ -10,9 +10,11 @@
       justify-center
     "
   >
-    <Header />
+    <Header class="z-10" />
 
-    <Nuxt />
+    <div class="mx-36 min-h-screen mt-6">
+      <Nuxt />
+    </div>
   </div>
 </template>
 
