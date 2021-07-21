@@ -13,7 +13,7 @@
         rounded-full
         text-2xl
       "
-      @click="$router.push('/addTodo')"
+      @click="$router.push('/add')"
     >
       <font-awesome-icon :icon="['fas', 'plus']" />
     </button>
@@ -30,7 +30,6 @@ export default {
   },
   computed: {
     ...mapGetters({
-      busy: 'todos/busy',
       todos: 'todos/todos',
     }),
   },

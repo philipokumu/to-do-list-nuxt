@@ -37,10 +37,12 @@ export const state = () => ({
       completed: false,
     },
   ],
+  todo: null,
 })
 
 export const getters = {
   todos: (state) => state.todos,
+  todo: (state) => state.todo,
   busy: (state) => state.busy,
 }
 export const actions = {
@@ -52,14 +54,29 @@ export const actions = {
       console.log(error)
     }
   },
-  completed({ commit, dispatch }, todoId) {
+  view({ commit }, todoId) {
+    try {
+      commit('VIEW_TODO', todoId)
+    } catch (error) {
+      console.log(error)
+    }
+  },
+  update({ commit }, todo) {
+    try {
+      commit('UPDATE_TODO', todo)
+      this.$router.push({ path: '/' })
+    } catch (error) {
+      console.log(error)
+    }
+  },
+  completed({ commit }, todoId) {
     try {
       commit('TOGGLE_COMPLETED_STATUS', todoId)
     } catch (error) {
       console.log(error)
     }
   },
-  delete({ commit, dispatch }, todoId) {
+  delete({ commit }, todoId) {
     try {
       commit('DELETE_TODO', todoId)
     } catch (error) {
@@ -69,14 +86,22 @@ export const actions = {
 }
 export const mutations = {
   ADD_TODO(state, payload) {
-    // state.todos = [...state.todos, payload]
     state.todos = [payload, ...state.todos]
   },
   TOGGLE_COMPLETED_STATUS(state, payload) {
-    const ourTodo = state.todos.find((todo) => todo.id === payload)
+    const ourTodo = state.todos.find((todo) => todo.id === parseInt(payload))
     ourTodo.completed = !ourTodo.completed
   },
   DELETE_TODO(state, payload) {
-    state.todos = state.todos.filter((todo) => todo.id !== payload)
+    state.todos = state.todos.filter((todo) => todo.id !== parseInt(payload))
+  },
+  VIEW_TODO(state, payload) {
+    state.todo = state.todos.find((todo) => todo.id === parseInt(payload))
+  },
+  UPDATE_TODO(state, payload) {
+    const ourTodo = state.todos.find((todo) => todo.id === parseInt(payload.id))
+    ourTodo.title = payload.title
+    ourTodo.category = payload.category
+    ourTodo.date = payload.date
   },
 }

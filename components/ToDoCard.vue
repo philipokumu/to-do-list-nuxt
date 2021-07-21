@@ -9,7 +9,7 @@
       mb-1
       rounded
       drop-shadow-md
-      hover:bg-blue-600 hover:bg-opacity-75 hover:text-white
+      hover:bg-blue-600 hover:bg-opacity-50 hover:text-white
     "
     :class="{ 'bg-red-400': todo.completed }"
   >
@@ -22,9 +22,11 @@
       />
     </div>
     <div class="flex flex-col font-medium w-10/12">
-      <h1 class="mb-2" :class="{ 'line-through': todo.completed }">
-        {{ todo.title.substring(0, 20) + '...' }}
-      </h1>
+      <nuxt-link :to="`/${todo.id}/edit`">
+        <h1 class="mb-2" :class="{ 'line-through': todo.completed }">
+          {{ todo.title.substring(0, 20) + '...' }}
+        </h1>
+      </nuxt-link>
       <div class="flex text-gray-500">
         <small class="mr-5 text-green-500">{{ todo.category }}</small>
         <small>{{ todo.date }}</small>
