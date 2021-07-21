@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{ todos }}
     <to-do-card
       v-for="(todo, index) in todos"
       :key="index"
@@ -76,33 +75,24 @@ export default {
       ],
     }
   },
-  created() {
+  mounted() {
     eventHub.$on('addTodo', (newItem) => {
+      this.addTodo(newItem)
+    })
+  },
+  beforeDestroy() {
+    // removing eventBus listener
+    eventHub.$off('addTodo')
+  },
+  methods: {
+    addTodo(newItem) {
+      // eslint-disable-next-line no-console
+      // console.log(newItem)
       newItem.id = this.todos.length
       this.todos = [newItem, ...this.todos]
       // eslint-disable-next-line no-console
       console.log(this.todos)
-      // this.todos.unshift(newItem)
-    })
-    // eslint-disable-next-line no-console
-    // console.log(this.todos.length)
-    // eslint-disable-next-line no-console
-    // console.log(this.todos.length)
-  },
-  methods: {
-    // addTodo(newItem) {
-    // const newItem = {
-    //   id: this.newTodo.length,
-    //   title: this.newTodo.title,
-    //   category: this.newTodo.category,
-    //   date: moment().format('MMMM Do YYYY'),
-    //   completed: false,
-    // }
-    // this.todos.unshift(newItem)
-    // this.todos = [newItem, ...this.todos]
-    // this.newTodo.title = ''
-    // this.newTodo.category = ''
-    // },
+    },
     deleteTodo(id) {
       this.todos = this.todos.filter((todo) => todo.id !== id)
     },
