@@ -86,7 +86,7 @@
 
 <script>
 import moment from 'moment'
-import eventHub from '../plugins/eventHub'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   data() {
     return {
@@ -96,16 +96,24 @@ export default {
       },
     }
   },
+  computed: {
+    ...mapGetters({
+      todos: 'todos/todos',
+    }),
+  },
   methods: {
+    ...mapActions({
+      addTodo: 'todos/add',
+    }),
     submitForm() {
-      const newItem = {
+      const newTodo = {
+        id: this.todos.length,
         title: this.newTodo.title,
         category: this.newTodo.category,
         date: moment().format('MMMM Do YYYY'),
         completed: false,
       }
-      eventHub.$emit('addTodo', newItem)
-      this.$router.push('/')
+      this.addTodo(newTodo)
     },
   },
 }

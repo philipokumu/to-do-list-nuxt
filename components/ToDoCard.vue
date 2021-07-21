@@ -8,12 +8,12 @@
         type="checkbox"
         class="cursor-pointer"
         :checked="todo.completed"
-        @change="markComplete()"
+        @change="markComplete"
       />
     </div>
     <div class="flex flex-col font-medium w-10/12">
       <h1 class="mb-2" :class="{ 'line-through': todo.completed }">
-        {{ todo.title }}
+        {{ todo.title.substring(0, 20) + '...' }}
       </h1>
       <div class="flex text-gray-500">
         <small class="mr-5 text-green-500">{{ todo.category }}</small>
@@ -22,7 +22,7 @@
     </div>
     <div
       class="w-1/12 flex justify-end items-center cursor-pointer"
-      @click="$emit('deleteTodo', todo.id)"
+      @click="deleteThisTodo"
     >
       <font-awesome-icon :icon="['fas', 'trash']" :style="{ color: 'red' }" />
     </div>
@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'ToDoCard',
   props: {
@@ -39,11 +40,15 @@ export default {
     },
   },
   methods: {
+    ...mapActions({
+      toggleCompleted: 'todos/completed',
+      deleteTodo: 'todos/delete',
+    }),
     markComplete() {
-      if (this.todo.completed) this.$emit('update:completed', false)
-      else {
-        this.$emit('update:completed', true)
-      }
+      this.toggleCompleted(this.todo.id)
+    },
+    deleteThisTodo() {
+      this.deleteTodo(this.todo.id)
     },
   },
 }
