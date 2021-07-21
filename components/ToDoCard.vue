@@ -1,6 +1,16 @@
 <template>
   <div
-    class="card p-5 flex bg-gray-50 mb-1 rounded drop-shadow-md"
+    class="
+      cursor-pointer
+      card
+      p-5
+      flex
+      bg-gray-50
+      mb-1
+      rounded
+      drop-shadow-md
+      hover:bg-blue-600 hover:bg-opacity-75 hover:text-white
+    "
     :class="{ 'bg-red-400': todo.completed }"
   >
     <div class="flex items-center w-1/12">
