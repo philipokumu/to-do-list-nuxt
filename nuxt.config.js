@@ -5,7 +5,7 @@ export default {
     base: '/to-do-list-nuxt/',
   },
   head: {
-    title: 'newproject',
+    title: 'To Do List',
     htmlAttrs: {
       lang: 'en',
     },
