@@ -40,14 +40,15 @@
           Cancel
         </button>
       </div>
-      <div class="mb-3 flex flex-col ml-36">
+      <div class="mb-3 flex flex-col ml-10 md:ml-36">
         <select
           v-model="data.category"
           name="category"
           class="
             p-3
             outline-none
-            w-1/3
+            w-10/12
+            md:w-1/3
             bg-transparent
             font-semibold
             text-black
@@ -80,7 +81,8 @@
             border-gray-50
             placeholder-gray-50
             text-white
-            w-2/3
+            w-10/12
+            md:w-2/3
           "
           required
           placeholder="Add todo item..."

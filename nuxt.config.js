@@ -1,9 +1,9 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
-  target: 'static',
-  router: {
-    base: '/to-do-list-nuxt/',
-  },
+  // target: 'static',
+  // router: {
+  //   base: '/to-do-list-nuxt/',
+  // },
   head: {
     title: 'To Do List',
     htmlAttrs: {
