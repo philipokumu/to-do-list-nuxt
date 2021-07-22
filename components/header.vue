@@ -1,6 +1,6 @@
 <template>
   <div class="bg-purple-600 text-3xl pt-2 sticky top-0 shadow-md text-white">
-    <h1 class="flex justify-center mb-5 font-extrabold">To do List</h1>
+    <h1 class="flex justify-center mb-5 font-extrabold">To Do List</h1>
   </div>
 </template>
 
